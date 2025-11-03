@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System Completo</title>
+    
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
+</head>
+<body>
+    
+    <header class="main-header">
+        <div class="container nav-container"> 
+            <a href="index.html" class="nav-brand">
+    <img src="../Imagens/logo.png" alt="Logo Marca da Empresa"> 
+            </a>
+
+            <button class="nav-toggle" aria-controls="main-nav" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+
+            <nav id="main-nav" class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home">Home</a></li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#projetos">Projetos</a>
+                        <ul class="submenu">
+                            <li><a href="#web">Desenvolvimento Web</a></li>
+                            <li><a href="#mobile">Aplicativos Mobile</a></li>
+                            <li><a href="#ux">Design UX/UI</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="#sobre">Sobre Nós</a></li>
+                    <li class="nav-item"><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-layout">
+        <section class="hero-section" id="home">
+            <div class="container hero-content">
+                <h1>Transformando Ideias em Realidade Digital</h1>
+                <p>Nossa expertise em desenvolvimento web, mobile e design UI/UX cria soluções inovadoras e impactantes.</p>
+                <a href="#projetos" class="btn btn-primary">Ver Nossos Projetos</a>
+            </div>
+        </section>
+
+        <div class="container">
+            
+            <section class="grid-section">
+                <h1 style="grid-column: span 12;">Título Principal da Página</h1>
+                <p style="grid-column: span 12;">O Layout Principal utiliza CSS Grid para esta estrutura.</p>
+            </section>
+            
+            <section class="specific-layout">
+                <aside class="sidebar-area">
+                    <p>SIDEBAR (3 Colunas no Desktop)</p>
+                </aside>
+                <div class="content-area">
+                    <p>CONTEÚDO PRINCIPAL (9 Colunas no Desktop)</p>
+                </div>
+            </section>
+
+            <section class="grid-section">
+                <h2 style="grid-column: span 12;">Componente de Botões</h2>
+                <div class="button-group" style="grid-column: span 12; display: flex; gap: 16px;">
+                    <button class="btn btn-primary">Botão Primário</button>
+                    <button class="btn btn-secondary">Botão Secundário</button>
+                    <button class="btn btn-primary btn-disabled" disabled>Botão Desabilitado</button>
+                    <a href="#" class="btn btn-primary">Link como Botão</a>
+                </div>
+            </section>
+
+            <section class="grid-section section-cards">
+                <h2 style="grid-column: span 12;">Componentes de Cards (usando o Grid de 12 colunas)</h2>
+                
+                <article class="card project-card">
+                    <div class="card-image"> <img src="../Imagens/project-web.jpg" alt="Exemplo de Projeto Web Design">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag tag-primary">Web Design</span>
+                        <h3>Projeto XYZ</h3>
+                        <p>Design e desenvolvimento de uma aplicação de e-commerce totalmente responsiva.</p>
+                        <a href="#" class="btn btn-secondary">Ver Projeto</a>
+                    </div>
+                </article>
+                
+                <article class="card project-card">
+                    <div class="card-image"> <img src="../Imagens/project-mobile.jpg" alt="Exemplo de Aplicativo Mobile">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag tag-secondary">Mobile App</span>
+                        <h3>App de Viagens</h3>
+                        <p>Interface de usuário focada em experiência mobile first e performance.</p>
+                        <a href="#" class="btn btn-secondary">Ver Detalhes</a>
+                    </div>
+                </article>
+            </section>
+            
+            <section class="grid-section form-section">
+                <h2 style="grid-column: span 12;">Formulários Estilizados com Validação</h2>
+                
+                <form class="styled-form" style="grid-column: 1 / span 8;">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" placeholder="Seu nome" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" placeholder="seu@email.com" required value="invalido@"> 
+                        <p class="validation-message validation-error">Por favor, insira um e-mail válido.</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" rows="5" placeholder="Sua mensagem..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                </form>
+            
+            </section>
+            
+        </div>
+    </main>
+
+    <footer class="main-footer">
+    <div class="container footer-grid">
+        
+        <div class="footer-col branding-area">
+            <a href="index.html" class="nav-brand">
+                <img src="../Imagens/logo.png" alt="Logo Marca da Empresa"> 
+            </a>
+        </div>
+        
+        <div class="footer-col nav-area">
+            <h4>Navegação</h4>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+            </ul>
+        </div>
+
+         <div class="footer-col contact-area">
+            <h4>Fale Conosco</h4>
+            <p class="contact-line">
+                <span class="contact-detail">Email: <a href="mailto:contato@empresa.com">contato@empresa.com</a></span>
+            <span class="contact-detail">Telefone: <a href="tel:+5511987654321">(11) 98765-4321</a></span>
+            </p>
+    </div>
+
+    </div>
+</footer>
+
+    <script src="js/main.js" defer></script>
+</body>
+</html>

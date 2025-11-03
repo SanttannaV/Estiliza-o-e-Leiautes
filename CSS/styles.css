@@ -1,0 +1,400 @@
+/* 1. SISTEMA DE DESIGN (Variáveis Unificadas) */
+:root {
+    --space-xs: 8px; --space-sm: 16px; --space-md: 24px; --space-lg: 32px;
+    --space-xl: 48px; --space-xxl: 64px;
+
+/*
+|--------------------------------------------------------------------------
+| PALETA DE CORES ATUAL (DESIGN SYSTEM)
+|--------------------------------------------------------------------------
+|
+| Nome da Variável         | Cor Hexadecimal | Função
+|--------------------------|-----------------|---------------------------------
+| --color-primary-base     | #0096ff         | Ação principal, botões, links. (AZUL VIVO)
+| --color-primary-light    | #e7f3ff         | Fundo suave de destaque, tag primária.
+| --color-secondary-dark   | #495057         | Fundo do Rodapé.
+| --color-neutral-white    | #ffffff         | Fundo principal, texto no rodapé.
+| --color-neutral-text     | #212529         | Texto padrão.
+| --color-feedback-success | #38c172         | Mensagens de Sucesso. (VERDE VIVO)
+| --color-feedback-danger  | #e3342f         | Mensagens de Erro/Alerta. (VERMELHO VIVO)
+|
+*/
+    --color-primary-base: #0096ff;   
+    --color-primary-light: #e7f3ff;  
+    --color-secondary-base: #6c757d; 
+    --color-secondary-dark: #495057; 
+    --color-neutral-white: #ffffff;  
+    --color-neutral-text: #212529;   
+    --color-neutral-border: #dee2e6;
+    --color-feedback-success: #38c172;
+    --color-feedback-danger: #e3342f;  
+
+    /* TIPOGRAFIA */
+    --font-family-base: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-size-body: 1rem; --font-size-h5: 1.25rem; --font-size-h4: 1.5rem;
+    --font-size-h3: 2rem; --font-size-h2: 2.5rem; --font-size-h1: 3rem;
+
+    --breakpoint-sm: 576px; --breakpoint-md: 768px; --breakpoint-lg: 992px;
+}
+
+/* 2. ESTILOS GLOBAIS E TIPOGRAFIA */
+body {
+    font-family: var(--font-family-base); color: var(--color-neutral-text);
+    line-height: 1.6; background-color: var(--color-neutral-white);
+}
+
+a {
+    color: var(--color-neutral-text); text-decoration: none; transition: color 0.2s;
+}
+
+a:hover, a:focus {
+    color: var(--color-primary-base); text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5 { line-height: 1.2; margin-bottom: var(--space-sm); }
+h1 { font-size: var(--font-size-h1); }
+h2 { font-size: var(--font-size-h2); }
+
+/* 3. LAYOUT E GRID (Estrutura Básica Mobile First) */
+.container {
+    width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 var(--space-md);
+}
+
+.grid-section {
+    display: grid; grid-template-columns: 1fr; gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.specific-layout {
+    display: grid; grid-template-columns: 1fr; gap: var(--space-lg);
+    margin-bottom: var(--space-xxl);
+}
+
+/* 4. NAVEGAÇÃO E ESTRUTURA (Com Flexbox) */
+.main-header {
+    background-color: var(--color-neutral-white);
+    border-bottom: 1px solid var(--color-neutral-border);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) 0;
+}
+   .nav-brand {
+    display: flex;
+    align-items: center;
+}
+
+.nav-brand img {
+    height: 150px;
+    width: auto;
+    max-width: 150px;
+}
+
+.main-footer {
+    background-color: var(--color-secondary-dark);
+    color: var(--color-neutral-white);
+    padding: var(--space-xxl) 0;
+    font-size: var(--font-size-body);
+}
+
+.main-footer a {
+    color: var(--color-neutral-white);
+    text-decoration: underline;
+}
+
+.main-footer a:hover {
+    color: var(--color-primary-base);
+}
+
+/* Estilos de Tipografia do Rodapé */
+.main-footer h4 {
+    font-size: var(--font-size-h5);
+    margin-bottom: var(--space-md);
+    color: var(--color-neutral-white);
+}
+
+.main-footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.main-footer ul li {
+    margin-bottom: var(--space-xs);
+}
+
+/* Estilização da logo dentro do rodapé - Mobile */
+.footer-col .nav-brand {
+    display: block;
+    text-align: center;
+    margin: 0 auto var(--space-md) auto;
+}
+
+.footer-col .nav-brand img {
+    height: 120px;
+    width: auto;
+    max-width: 120px;
+    margin-bottom: var(--space-sm);
+}
+
+/* Estilos para o Grid de Colunas no Rodapé - Mobile */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    text-align: left;
+}
+
+/* Estilos Específicos do Rodapé */
+.contact-area p {
+    margin-bottom: var(--space-xs);
+}
+
+.contact-area .copyright {
+    margin-top: var(--space-lg);
+}
+
+/* MEDIA QUERY PARA DESKTOP/TABLET (MD - 768px) */
+@media (min-width: var(--breakpoint-md)) {
+    
+    /* Define as 3 colunas LADO A LADO no rodapé */
+    .footer-grid {
+        grid-template-columns: 2fr 1fr 2fr;
+        text-align: left;
+    }
+
+    /* Regra CORRIGIDA para alinhar Email e Telefone LADO A LADO */
+    .contact-area .contact-line { /* MUDAMOS DE 'p' para '.contact-line' */
+        display: flex;
+        flex-wrap: wrap; /* Permite quebrar a linha se a tela for muito estreita */
+        align-items: center;
+        gap: var(--space-md); /* Aumentamos o gap para separar bem */
+    }
+
+    /* Corrige o alinhamento da Logo na coluna de desktop */
+    .footer-col .nav-brand {
+        text-align: left;
+        margin: 0 0 var(--space-md) 0;
+    }
+}
+
+
+/* 5. COMPONENTES ESSENCIAIS (Botões, Cards, Formulários) */
+.btn {
+    display: inline-flex; align-items: center; padding: var(--space-sm) var(--space-md);
+    border: 1px solid transparent; border-radius: 4px; font-weight: 600;
+    cursor: pointer; transition: background-color 0.2s;
+}
+.btn-primary {
+    background-color: var(--color-primary-base); color: var(--color-neutral-white);
+}
+.btn-secondary {
+    background-color: transparent; border-color: var(--color-secondary-base);
+    color: var(--color-secondary-dark);
+}
+.btn-disabled { background-color: var(--color-neutral-border); color: var(--color-secondary-base); }
+
+/* CARDS E TAGS */
+.card { border: 1px solid var(--color-neutral-border); border-radius: 8px; overflow: hidden; }
+.card-tag { padding: 4px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 700; }
+.tag-primary { background-color: var(--color-primary-light); color: var(--color-primary-base); }
+
+/* FORMULÁRIOS E FEEDBACK */
+.styled-form input, .styled-form textarea {
+    width: 100%; padding: var(--space-sm); border: 1px solid var(--color-neutral-border);
+    border-radius: 4px; font-size: var(--font-size-body);
+}
+
+.validation-error { color: var(--color-feedback-danger); display: block; }
+
+.alert { border: 1px solid transparent; padding: var(--space-md); border-radius: 4px; }
+.alert-success { color: var(--color-feedback-success); } 
+
+/* 6. MEDIA QUERIES (RESOLVE O LAYOUT DE DESKTOP) */
+/* Estilos padrão do menu mobile (ESCONDIDO) */
+.main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-neutral-white);
+    border-top: 1px solid var(--color-neutral-border);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    z-index: 99;
+    padding: var(--space-md) 0;
+}
+
+/* Garante que os itens da lista fiquem em coluna */
+.nav-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--space-md);
+}
+
+.nav-item {
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-neutral-border);
+}
+
+.nav-item:last-child {
+    border-bottom: none;
+}
+
+/* Mostra o menu quando a classe 'is-open' é adicionada pelo JS */
+.main-nav.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* LG (992px e acima) - Ativa o Grid de 12 Colunas e o Layout Desktop */
+@media (min-width: var(--breakpoint-lg)) {
+    
+    /* Grid de 12 Colunas */
+    .grid-section {
+        grid-template-columns: repeat(12, 1fr);
+    }
+    
+    .section-cards .card {
+        grid-column: span 4;
+    }
+    
+    /* Sidebar Layout */
+    .specific-layout {
+        grid-template-columns: 3fr 9fr;
+    }
+    .sidebar-area { grid-column: 1 / span 3; }
+    .content-area { grid-column: 4 / span 9; }
+
+    /* Navegação Desktop */
+    .nav-toggle { display: none; }
+    .main-nav {
+        position: static;
+        transform: none;
+        background: none;
+        padding-top: 0;
+    }
+    .nav-list { flex-direction: row; gap: var(--space-md); }
+}
+
+/* Estilos para a Seção Hero */
+.hero-section {
+    background-image: url('../Imagens/hero-background.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--color-neutral-white);
+    text-align: center;
+    padding: var(--space-xxl) 0;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: var(--font-size-h1);
+    margin-bottom: var(--space-md);
+    color: var(--color-neutral-white);
+}
+
+.hero-content p {
+    font-size: var(--font-size-h3);
+    margin-bottom: var(--space-xl);
+}
+
+/* Estilos para Imagens dentro dos Cards */
+.card-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-neutral-border);
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Ajuste o card-content para ter um fundo branco caso o card-image tenha fundo transparente */
+.project-card .card-content {
+    background-color: var(--color-neutral-white);
+}
+
+/* Remover o placeholder cinza agora que temos imagens */
+.card-image-placeholder {
+    display: none;
+}
+/* --- ESTILIZAÇÃO DO ICONE HAMBÚRGUER --- */
+
+/* Esconde o ícone no desktop */
+.nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 30px;
+    width: 30px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 100;
+}
+
+/* Base (linha central) do ícone */
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: var(--color-primary-base);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Posições das linhas de cima e de baixo */
+.hamburger::before {
+    transform: translateY(-8px);
+}
+
+.hamburger::after {
+    transform: translateY(4px);
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger {
+    background-color: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger::before {
+    transform: translateY(4px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger::after {
+    transform: translateY(-4px) rotate(-45deg);
+}
